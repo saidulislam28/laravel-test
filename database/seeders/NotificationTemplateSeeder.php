@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 use App\Models\NotificationTemplate;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class NotificationTemplateSeeder extends Seeder
 {
@@ -21,7 +22,9 @@ class NotificationTemplateSeeder extends Seeder
     public function setEmailTemplates(){
 
         if ($this->version == '1.0') {
+            Schema::disableForeignKeyConstraints();
             NotificationTemplate::truncate();
+            Schema::enableForeignKeyConstraints();
         }
 
         $emailTemplates = $this->getEmailTemplates();

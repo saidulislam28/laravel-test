@@ -12,6 +12,7 @@ use App\Models\UserSubjectGroupSubject;
 use App\Models\UserSubjectSlot;
 use App\Services\BookingService;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -25,7 +26,7 @@ class TutorSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        Schema::disableForeignKeyConstraints();
         UserSubjectSlot::truncate();
         UserEducation::truncate();
         UserExperience::truncate();
@@ -3921,6 +3922,7 @@ class TutorSeeder extends Seeder
                 }
             }
         }
+        Schema::enableForeignKeyConstraints();
     }
 
     function randomTime($start, $end)

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 use App\Models\CountryState;
 
 class CountryStatesSeeder extends Seeder {
@@ -12,7 +13,9 @@ class CountryStatesSeeder extends Seeder {
      * @return void
      */
     public function run() {
+        Schema::disableForeignKeyConstraints();
         CountryState::truncate();
+        Schema::enableForeignKeyConstraints();
         $states = array(
             '7' => array( // Angola states.
                 'BGO' => 'Bengo',

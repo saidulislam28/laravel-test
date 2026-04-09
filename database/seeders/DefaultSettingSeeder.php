@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\{Menu, MenuItem};
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Larabuild\Optionbuilder\Facades\Settings;
@@ -845,8 +846,10 @@ class DefaultSettingSeeder extends Seeder
      */
     public function defualtMenu()
     {
+        Schema::disableForeignKeyConstraints();
         Menu::truncate();
         MenuItem::truncate();
+        Schema::enableForeignKeyConstraints();
         $menus = [
             [
                 'name'          => 'Header menu',

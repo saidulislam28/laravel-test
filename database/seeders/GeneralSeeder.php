@@ -30,8 +30,10 @@ class GeneralSeeder extends Seeder
 
         $admin->assignRole('admin');
 
+        Schema::disableForeignKeyConstraints();
         SubjectGroup::truncate();
         Subject::truncate();
+        Schema::enableForeignKeyConstraints();
 
         SubjectGroup::insert([
             ['name' => 'Primary school (Grade 1 to 5)'],

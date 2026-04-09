@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 use App\Models\Blog;
 use App\Models\BlogCategoryLink;
 use App\Models\BlogTag;
@@ -16,9 +17,11 @@ class BlogSeeder extends Seeder
 {
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
         Blog::truncate();
         BlogCategoryLink::truncate();
         BlogTagLink::truncate();
+        Schema::enableForeignKeyConstraints();
 
         $storagePath = storage_path('app/public/blogs/');
 

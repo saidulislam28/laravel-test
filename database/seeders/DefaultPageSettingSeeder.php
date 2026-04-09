@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Larabuild\Pagebuilder\Models\Page;
@@ -231,7 +232,9 @@ class DefaultPageSettingSeeder extends Seeder
             return;
         }
 
+        Schema::disableForeignKeyConstraints();
         Page::truncate();
+        Schema::enableForeignKeyConstraints();
         $pageData = [];
         $pages = [
             [

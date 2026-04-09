@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 use App\Models\Blog;
 use App\Models\BlogTag;
 use App\Models\Tag;
@@ -11,7 +12,9 @@ class BlogTagSeeder extends Seeder
 {
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
         BlogTag::truncate();
+        Schema::enableForeignKeyConstraints();
 
         $tags = [
             'Pharma',
